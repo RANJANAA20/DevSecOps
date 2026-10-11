@@ -127,7 +127,23 @@ Wapiti confirmed the command injection at runtime, which Semgrep found staticall
 
 **Why active DAST needs authorisation.** An active scan sends real attack payloads: injection strings, command payloads and fuzzing. Against a system you don't own it is indistinguishable from an attack, and it may be illegal. Even against your own systems it can corrupt data, trigger alerts or cause an outage. It must run only against targets with written authorisation, ideally an isolated pre-production copy, with a defined scope and time window. Here the target is a throwaway local app bound to `127.0.0.1`.
 
-<!-- ZAP -->
+### DAST: OWASP ZAP baseline ([results](devsecops/dast/results/))
+
+The official ZAP container (`ghcr.io/zaproxy/zaproxy:stable`) ran `zap-baseline.py`, a passive scan with no attack payloads, against the lab image on `127.0.0.1:5000`. Reports: `zap-baseline.html`, `zap-baseline.json`, `zap-baseline.log`.
+
+```
+FAIL-NEW: 0   WARN-NEW: 7   INFO: 0   PASS: 60
+Medium  Content Security Policy (CSP) Header Not Set
+Medium  Missing Anti-clickjacking Header
+Low     X-Content-Type-Options Header Missing
+Low     Server Leaks Version Information via "Server" HTTP Response Header Field
+Low     Permissions Policy Header Not Set
+Low     Cross-Origin-Embedder/Opener/Resource-Policy headers missing or invalid
+Info    Storable and Cacheable Content
+```
+
+Under the decision table, these are MEDIUM or informational DAST alerts, so they WARN and go to the hardening backlog; none blocks. The baseline is passive, so it did not find the injection flaws; Semgrep and Wapiti did. Its missing-header findings agree with Wapiti's CSP and clickjacking findings, which is useful corroboration.
+
 
 ### Signing and verification: Cosign ([results](devsecops/signing/results/))
 
