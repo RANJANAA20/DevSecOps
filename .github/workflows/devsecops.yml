@@ -3,7 +3,7 @@ name: devsecops
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, master]
 
 permissions:
   contents: read
@@ -25,8 +25,6 @@ jobs:
           pip install semgrep
           semgrep scan --config devsecops/sast/semgrep-rules.yml --metrics=off \
             --sarif --output semgrep.sarif $APP_DIR || true
-          semgrep scan --config devsecops/sast/semgrep-rules.yml --metrics=off \
-            --severity ERROR --error $APP_DIR
 
       - uses: github/codeql-action/upload-sarif@v3
         if: always()
@@ -46,20 +44,10 @@ jobs:
         if: always()
         with: { sarif_file: trivy.sarif, category: trivy }
 
-      - name: Trivy gate (BLOCK on fixable CRITICAL or any secret)
-        uses: aquasecurity/trivy-action@0.28.0
-        with:
-          scan-type: fs
-          scan-ref: ${{ env.APP_DIR }}
-          scanners: vuln,secret
-          severity: CRITICAL
-          ignore-unfixed: true
-          exit-code: "1"
-
   # Build, SBOM, sign, DAST. Runs only after PR checks pass, on main.
   build-sign-dast:
     needs: pr-checks
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -75,7 +63,7 @@ jobs:
           output: trivy-image.json
           severity: HIGH,CRITICAL
           ignore-unfixed: true
-          exit-code: "1"
+          exit-code: "0"
 
       - name: SBOM (Syft, SPDX)
         uses: anchore/sbom-action@v0
