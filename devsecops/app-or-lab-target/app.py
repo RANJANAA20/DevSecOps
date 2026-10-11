@@ -1,4 +1,5 @@
 """Deliberately vulnerable lab app. For local, authorised testing only."""
+import os
 import sqlite3
 import subprocess
 
@@ -37,4 +38,4 @@ def ping():
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)  # debug console exposed
+    app.run(host=os.environ.get("APP_HOST", "127.0.0.1"), port=5000, debug=True)  # debug console exposed

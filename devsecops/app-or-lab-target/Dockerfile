@@ -4,4 +4,5 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY app.py .
 EXPOSE 5000
+ENV APP_HOST=0.0.0.0
 CMD ["python", "app.py"]

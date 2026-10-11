@@ -1,0 +1,4 @@
+﻿Content Security Policy Configuration | level=1 | GET /ping | param=
+Command execution | level=4 | GET /ping | param=host
+Clickjacking Protection | level=1 | GET /ping | param=
+MIME Type Confusion | level=1 | GET /ping | param=

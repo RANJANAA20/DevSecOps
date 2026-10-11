@@ -1,36 +1,51 @@
-# Image-level stages. Requires a working Docker engine; NOT yet run on this machine (virtualization disabled).
-# Flow: build -> Trivy image scan -> Syft SBOM -> push to local registry -> Cosign sign by digest -> verify -> ZAP baseline.
-param([string]$Target = "$PSScriptRoot\..\app-or-lab-target")
-
-$ErrorActionPreference = 'Stop'
+# Image-level stages: build -> Trivy image scan -> Syft SBOM -> local registry -> Cosign sign/verify by digest -> ZAP baseline.
+# Needs a working Docker engine. Local key and no transparency log stand in for keyless signing in CI.
+$ErrorActionPreference = 'Continue'
+$env:Path = [Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [Environment]::GetEnvironmentVariable('Path', 'User')
 $root = (Resolve-Path "$PSScriptRoot\..\..").Path
-$img = 'lab-app:local'
+$ds = "$root\devsecops"
+$cs = "$ds\container-scan\results"
+$sig = "$ds\signing\results"
+$dast = "$ds\dast\results"
 $reg = 'localhost:5001'
-$out = "$root\devsecops\container-scan\results"
 $env:COSIGN_PASSWORD = 'lab-only-password'
 $cosign = 'cosign-windows-amd64'
-$key = "$root\devsecops\signing\cosign.key"
-$pub = "$root\devsecops\signing\cosign.pub"
+New-Item -ItemType Directory -Force $cs, $sig, $dast, "$ds\remediation\results" | Out-Null
 
-docker build -t $img $Target
+Write-Host '== build'
+docker build -q -t lab-app:local "$ds\app-or-lab-target" 2>&1 | Out-Null
+docker build -q -t lab-app:fixed "$ds\remediation" 2>&1 | Out-Null
 
-trivy image --quiet --format json --output "$out\trivy-image.json" $img
-trivy image --quiet --severity HIGH,CRITICAL --format table --output "$out\trivy-image.txt" $img
-syft $img -q -o "spdx-json=$out\sbom-image.spdx.json"
+Write-Host '== Trivy image + Syft SBOM'
+trivy image --quiet --format json --output "$cs\trivy-image.json" lab-app:local
+trivy image --quiet --severity 'HIGH,CRITICAL' --format table --output "$cs\trivy-image.txt" lab-app:local
+trivy image --quiet --severity 'HIGH,CRITICAL' --format table --output "$ds\remediation\results\trivy-image-after.txt" lab-app:fixed
+syft lab-app:local -q -o "spdx-json=$cs\sbom-image.spdx.json" 2>$null
 
-# Local registry stands in for the production registry.
-docker rm -f lab-registry 2>$null | Out-Null
-docker run -d --name lab-registry -p 5001:5000 registry:2 | Out-Null
-docker tag $img "$reg/lab-app:local"
-docker push "$reg/lab-app:local"
-$digest = (docker inspect --format '{{index .RepoDigests 0}}' "$reg/lab-app:local")
+Write-Host '== registry, push, sign, verify'
+docker rm -f lab-registry 2>&1 | Out-Null
+docker run -d --name lab-registry -p 5001:5000 registry:2 2>&1 | Out-Null
+docker tag lab-app:local "$reg/lab-app:local"
+docker tag lab-app:fixed "$reg/lab-app-unsigned:fixed"
+docker push "$reg/lab-app:local" 2>&1 | Out-Null
+docker push "$reg/lab-app-unsigned:fixed" 2>&1 | Out-Null
+$digest = (docker image inspect "$reg/lab-app:local" --format '{{range .RepoDigests}}{{println .}}{{end}}' | Where-Object { $_ -like "$reg/*" } | Select-Object -First 1).Trim()
 
-# Sign by digest (never by tag); local key and no transparency log, as in the blob lab.
-& $cosign sign --yes --key $key --tlog-upload=false --allow-insecure-registry $digest
-& $cosign verify --key $pub --insecure-ignore-tlog --allow-insecure-registry $digest | Out-File "$root\devsecops\signing\results\cosign-image.txt" -Encoding utf8
+$log = @("image: $digest", '== sign (by digest)')
+$log += & $cosign sign --yes --key "$ds\signing\cosign.key" --use-signing-config=false --tlog-upload=false $digest 2>&1 | ForEach-Object { "$_" }
+$log += '== verify signed image'
+$log += & $cosign verify --key "$ds\signing\cosign.pub" --insecure-ignore-tlog $digest 2>&1 | ForEach-Object { "$_" }
+$log += "verify exit=$LASTEXITCODE"
+$log += '== verify unsigned image (expected to FAIL)'
+$log += & $cosign verify --key "$ds\signing\cosign.pub" --insecure-ignore-tlog "$reg/lab-app-unsigned:fixed" 2>&1 | ForEach-Object { "$_" }
+$log += "unsigned verify exit=$LASTEXITCODE (non-zero = admission would reject)"
+$log | Set-Content "$sig\cosign-image.txt" -Encoding utf8
 
-# Baseline DAST with the official container (passive only).
-docker run -d --name lab-target -p 5000:5000 $img | Out-Null
-docker run --rm --network host -v "${root}\devsecops\dast\results:/zap/wrk:rw" ghcr.io/zaproxy/zaproxy:stable `
-    zap-baseline.py -t http://host.docker.internal:5000 -r zap-baseline.html -J zap-baseline.json -I
-docker rm -f lab-target lab-registry | Out-Null
+Write-Host '== ZAP baseline (passive) against the local container only'
+docker rm -f lab-target 2>&1 | Out-Null
+docker run -d --name lab-target -p 127.0.0.1:5000:5000 lab-app:local 2>&1 | Out-Null
+$up = $false
+1..20 | ForEach-Object { if (-not $up) { try { Invoke-WebRequest http://127.0.0.1:5000/ -UseBasicParsing -TimeoutSec 2 | Out-Null; $up = $true } catch { Start-Sleep 1 } } }
+docker run --rm -v "${dast}:/zap/wrk:rw" ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:5000 -r zap-baseline.html -J zap-baseline.json -I 2>&1 | Out-File "$dast\zap-baseline.log" -Encoding utf8
+docker rm -f lab-target lab-registry 2>&1 | Out-Null
+Write-Host 'done'

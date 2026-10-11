@@ -1,0 +1,21 @@
+﻿image: localhost:5001/lab-app@sha256:eae995c29c515ecd66c7e12616e9e5298d5269ae920c38f704e95e57a0c715ec
+== sign (by digest)
+Flag --tlog-upload has been deprecated, prefer using a --signing-config file with no transparency log services
+Signing artifact...
+Pushing signature to: localhost:5001/lab-app
+== verify signed image
+WARNING: Skipping tlog verification is an insecure practice that lacks transparency and auditability verification for the signature.
+System.Management.Automation.RemoteException
+Verification for localhost:5001/lab-app@sha256:eae995c29c515ecd66c7e12616e9e5298d5269ae920c38f704e95e57a0c715ec --
+The following checks were performed on each of these signatures:
+  - The cosign claims were validated
+  - Existence of the claims in the transparency log was verified offline
+  - The signatures were verified against the specified public key
+
+[{"critical":{"identity":{"docker-reference":"localhost:5001/lab-app@sha256:eae995c29c515ecd66c7e12616e9e5298d5269ae920c38f704e95e57a0c715ec"},"image":{"docker-manifest-digest":"sha256:eae995c29c515ecd66c7e12616e9e5298d5269ae920c38f704e95e57a0c715ec"},"type":"https://sigstore.dev/cosign/sign/v1"},"optional":{}}]
+verify exit=0
+== verify unsigned image (expected to FAIL)
+WARNING: Skipping tlog verification is an insecure practice that lacks transparency and auditability verification for the signature.
+Error: no signatures found
+error during command execution: no signatures found
+unsigned verify exit=10 (non-zero = admission would reject)

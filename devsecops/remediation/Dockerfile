@@ -6,4 +6,5 @@ COPY app.py .
 RUN useradd --system --no-create-home appuser
 USER appuser
 EXPOSE 5000
+ENV APP_HOST=0.0.0.0
 CMD ["python", "app.py"]

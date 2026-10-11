@@ -1,0 +1,48 @@
+﻿docker : Unable to find image 'ghcr.io/zaproxy/zaproxy:stable' locally
+At line:1 char:276
++ ... ults).Path; docker run --rm -v "${d}:/zap/wrk:rw" ghcr.io/zaproxy/zap ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Unable to find ...stable' locally 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+stable: Pulling from zaproxy/zaproxy
+7fd1ebe418b5: Pulling fs layer
+3868c39a7ae4: Pulling fs layer
+f034b4200fd6: Pulling fs layer
+b4d9080a5465: Pulling fs layer
+6db646fa6bc2: Pulling fs layer
+e7a42abf1884: Pulling fs layer
+125c3a49a3c8: Pulling fs layer
+543ced54e96e: Pulling fs layer
+47737c69d593: Pulling fs layer
+8ef020d881d9: Pulling fs layer
+90731ab28e80: Pulling fs layer
+4d50ae0cc8af: Pulling fs layer
+2b2df1aea414: Pulling fs layer
+4c2883a5f689: Pulling fs layer
+5e9297520b9e: Pulling fs layer
+a906b224ce5d: Pulling fs layer
+26594374861c: Pulling fs layer
+630c1c3b0b45: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+9c316a78fb1d: Pulling fs layer
+f034b4200fd6: Download complete
+3868c39a7ae4: Download complete
+47737c69d593: Download complete
+543ced54e96e: Download complete
+7fd1ebe418b5: Download complete
+8ef020d881d9: Download complete
+90731ab28e80: Download complete
+b4d9080a5465: Download complete
+5e9297520b9e: Download complete
+4d50ae0cc8af: Download complete
+125c3a49a3c8: Download complete
+2b2df1aea414: Download complete
+a906b224ce5d: Download complete
+4c2883a5f689: Download complete
+7fd1ebe418b5: Pull complete
+26594374861c: Download complete
+4f4fb700ef54: Download complete
+9c316a78fb1d: Download complete
+630c1c3b0b45: Download complete
