@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Wapiti scan report</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+    <div id="page">
+        <header style="text-align: center">
+        <h2 class="title" style="text-align: center">Wapiti vulnerability report</h2>
+        <h3>Target: http://127.0.0.1:5000/ping?host=127.0.0.1</h3>
+        <p>Date of the scan: Sun, 11 Oct 2026 09:40:10 +0000. Scope of the scan: domain. Crawled pages: 1</p>
+        </header>
+        <hr />
+
+        <h4>Summary</h4>
+        <table class="summary-table" style="background: url('logo_clear.png') no-repeat center;">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Number of vulnerabilities found</th>
+                </tr>
+            </thead>
+            <tbody id="summary">
+                    <tr>
+                        <td class="small">
+                            Backup file
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Cleartext Submission of Password
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Weak credentials
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            CRLF Injection
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            <a href="#vuln_type_4">Content Security Policy Configuration</a>
+                        </td>
+                        <td class="small text-centered">
+                            1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Cross Site Request Forgery
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            CVE-2024-55591
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Potentially dangerous file
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            <a href="#vuln_type_8">Command execution</a>
+                        </td>
+                        <td class="small text-centered">
+                            1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Path Traversal
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Fingerprint web application framework
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Fingerprint web server
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Htaccess Bypass
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            HTML Injection
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            <a href="#vuln_type_14">Clickjacking Protection</a>
+                        </td>
+                        <td class="small text-centered">
+                            1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            HTTP Strict Transport Security (HSTS)
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            <a href="#vuln_type_16">MIME Type Confusion</a>
+                        </td>
+                        <td class="small text-centered">
+                            1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            HttpOnly Flag cookie
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Unencrypted Channels
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Inconsistent Redirection
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Information Disclosure - Full Path
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            LDAP Injection
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Log4Shell
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            NS takeover
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Open Redirect
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Reflected Cross Site Scripting
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Secure Flag cookie
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Spring4Shell
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            SQL Injection
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            TLS/SSL misconfigurations
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Server Side Request Forgery
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Stack Trace Disclosure
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Stored HTML Injection
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Stored Cross Site Scripting
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Subdomain takeover
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Blind SQL Injection
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Unrestricted File Upload
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Vulnerable software
+                        </td>
+                        <td class="small text-centered">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            <a href="#anom_type_0">Internal Server Error</a>
+                        </td>
+                        <td class="small text-centered">4</td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Resource consumption
+                        </td>
+                        <td class="small text-centered">0</td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Review Webserver Metafiles for Information Leakage
+                        </td>
+                        <td class="small text-centered">0</td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            Fingerprint web technology
+                        </td>
+                        <td class="small text-centered">0</td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            HTTP Methods
+                        </td>
+                        <td class="small text-centered">0</td>
+                    </tr>
+                    <tr>
+                        <td class="small">
+                            TLS/SSL misconfigurations
+                        </td>
+                        <td class="small text-centered">0</td>
+                    </tr>
+            </tbody>
+        </table>
+        <hr />
+        <div id="details">
+                <h3 id="vuln_type_4">Content Security Policy Configuration</h3>
+                <dl>
+                    <dt>Description</dt>
+                    <dd>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks.</dd>
+                </dl>
+
+                    <div class="tab-container">
+                        <h4><span class="severity severity-low"></span> Vulnerability found in /ping</h4>
+                        <nav class="tab-nav">
+                            <a href="#tab-vuln-4-0-1" class="tab-link active">Description</a>
+                            <a href="#tab-vuln-4-0-2" class="tab-link">HTTP Request</a>
+                            <a href="#tab-vuln-4-0-4" class="tab-link">cURL command line</a>
+                            <a href="#tab-vuln-4-0-5" class="tab-link">WSTG Code</a>
+                        </nav>
+                        <section id="tab-vuln-4-0-1" class="tab-content" style="min-height: 124px;">
+                            <pre>CSP is not set for URL: http://127.0.0.1:5000/ping?host=127.0.0.1</pre>
+                        </section>
+                        <section id="tab-vuln-4-0-2" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre style="white-space: normal;">
+                                    GET /ping?host=127.0.0.1 HTTP/1.1
+                                    <br>
+                                    host: 127.0.0.1:5000
+                                    <br>
+                                    connection: keep-alive
+                                    <br>
+                                    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+                                    <br>
+                                    accept-language: en-US
+                                    <br>
+                                    accept-encoding: gzip, deflate, br
+                                    <br>
+                                    accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+                                    <br>
+                            </pre>
+                        </section>
+                        <section id="tab-vuln-4-0-4" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>curl &#34;http://127.0.0.1:5000/ping?host=127.0.0.1&#34;</pre>
+                        </section>
+                        <section id="tab-vuln-4-0-5" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>[&#39;WSTG-CONF-12&#39;, &#39;OSHP-Content-Security-Policy&#39;]</pre>
+                        </section>
+                    </div>
+
+                <dl><dt>Solutions</dt><dd>Configuring Content Security Policy involves adding the Content-Security-Policy HTTP header to a web page and giving it values to control what resources the user agent is allowed to load for that page.</dd></dl>
+                <h5>References</h5>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Mozilla: Content Security Policy (CSP)</a></li>
+                    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html">OWASP: Content Security Policy Cheat Sheet</a></li>
+                    <li><a href="https://owasp.org/www-pdf-archive/2019-02-22_-_How_do_I_Content_Security_Policy_-_Print.pdf">OWASP: How to do Content Security Policy (PDF)</a></li>
+                    <li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/12-Test_for_Content_Security_Policy">OWASP: Content Security Policy</a></li>
+                </ul>
+                <br />
+                <hr>
+                <h3 id="vuln_type_8">Command execution</h3>
+                <dl>
+                    <dt>Description</dt>
+                    <dd>This attack consists in executing system commands on the server. The attacker tries to inject this commands in the request parameters.</dd>
+                </dl>
+
+                    <div class="tab-container">
+                        <h4><span class="severity severity-critical"></span> Vulnerability found in /ping</h4>
+                        <nav class="tab-nav">
+                            <a href="#tab-vuln-8-0-1" class="tab-link active">Description</a>
+                            <a href="#tab-vuln-8-0-2" class="tab-link">HTTP Request</a>
+                            <a href="#tab-vuln-8-0-4" class="tab-link">cURL command line</a>
+                            <a href="#tab-vuln-8-0-5" class="tab-link">WSTG Code</a>
+                        </nav>
+                        <section id="tab-vuln-8-0-1" class="tab-content" style="min-height: 124px;">
+                            <pre>Blind command execution via injection in the parameter host</pre>
+                        </section>
+                        <section id="tab-vuln-8-0-2" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre style="white-space: normal;">
+                                    GET /ping?host=%26ping%20-n%2025%20127.0.0.1%26 HTTP/1.1
+                                    <br>
+                                    host: 127.0.0.1:5000
+                                    <br>
+                                    connection: keep-alive
+                                    <br>
+                                    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+                                    <br>
+                                    accept-language: en-US
+                                    <br>
+                                    accept-encoding: gzip, deflate, br
+                                    <br>
+                                    accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+                                    <br>
+                            </pre>
+                        </section>
+                        <section id="tab-vuln-8-0-4" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>curl &#34;http://127.0.0.1:5000/ping?host=%26ping%20-n%2025%20127.0.0.1%26&#34;</pre>
+                        </section>
+                        <section id="tab-vuln-8-0-5" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>[&#39;WSTG-INPV-12&#39;]</pre>
+                        </section>
+                    </div>
+
+                <dl><dt>Solutions</dt><dd>Prefer working without user input when using file system calls.</dd></dl>
+                <h5>References</h5>
+                <ul>
+                    <li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/12-Testing_for_Command_Injection">OWASP: Command Injection</a></li>
+                    <li><a href="https://cwe.mitre.org/data/definitions/78.html">CWE-78: Improper Neutralization of Special Elements used in an OS Command (OS Command Injection)</a></li>
+                </ul>
+                <br />
+                <hr>
+                <h3 id="vuln_type_14">Clickjacking Protection</h3>
+                <dl>
+                    <dt>Description</dt>
+                    <dd>Clickjacking is a technique that tricks a user into clicking something different from what the user perceives, potentially revealing confidential information or taking control of their computer.</dd>
+                </dl>
+
+                    <div class="tab-container">
+                        <h4><span class="severity severity-low"></span> Vulnerability found in /ping</h4>
+                        <nav class="tab-nav">
+                            <a href="#tab-vuln-14-0-1" class="tab-link active">Description</a>
+                            <a href="#tab-vuln-14-0-2" class="tab-link">HTTP Request</a>
+                            <a href="#tab-vuln-14-0-4" class="tab-link">cURL command line</a>
+                            <a href="#tab-vuln-14-0-5" class="tab-link">WSTG Code</a>
+                        </nav>
+                        <section id="tab-vuln-14-0-1" class="tab-content" style="min-height: 124px;">
+                            <pre>X-Frame-Options is not set</pre>
+                        </section>
+                        <section id="tab-vuln-14-0-2" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre style="white-space: normal;">
+                                    GET /ping?host=127.0.0.1 HTTP/1.1
+                                    <br>
+                                    host: 127.0.0.1:5000
+                                    <br>
+                                    connection: keep-alive
+                                    <br>
+                                    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+                                    <br>
+                                    accept-language: en-US
+                                    <br>
+                                    accept-encoding: gzip, deflate, br
+                                    <br>
+                                    accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+                                    <br>
+                            </pre>
+                        </section>
+                        <section id="tab-vuln-14-0-4" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>curl &#34;http://127.0.0.1:5000/ping?host=127.0.0.1&#34;</pre>
+                        </section>
+                        <section id="tab-vuln-14-0-5" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>[&#39;OSHP-X-Frame-Options&#39;]</pre>
+                        </section>
+                    </div>
+
+                <dl><dt>Solutions</dt><dd>Implement X-Frame-Options or Content Security Policy (CSP) frame-ancestors directive.</dd></dl>
+                <h5>References</h5>
+                <ul>
+                    <li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/09-Testing_for_Clickjacking">OWASP: Clickjacking</a></li>
+                    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html">OWASP: Clickjacking Defense Cheat Sheet</a></li>
+                </ul>
+                <br />
+                <hr>
+                <h3 id="vuln_type_16">MIME Type Confusion</h3>
+                <dl>
+                    <dt>Description</dt>
+                    <dd>MIME type confusion can occur when a browser interprets files as a different type than intended, which could lead to security vulnerabilities like cross-site scripting (XSS).</dd>
+                </dl>
+
+                    <div class="tab-container">
+                        <h4><span class="severity severity-low"></span> Vulnerability found in /ping</h4>
+                        <nav class="tab-nav">
+                            <a href="#tab-vuln-16-0-1" class="tab-link active">Description</a>
+                            <a href="#tab-vuln-16-0-2" class="tab-link">HTTP Request</a>
+                            <a href="#tab-vuln-16-0-4" class="tab-link">cURL command line</a>
+                            <a href="#tab-vuln-16-0-5" class="tab-link">WSTG Code</a>
+                        </nav>
+                        <section id="tab-vuln-16-0-1" class="tab-content" style="min-height: 124px;">
+                            <pre>X-Content-Type-Options is not set</pre>
+                        </section>
+                        <section id="tab-vuln-16-0-2" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre style="white-space: normal;">
+                                    GET /ping?host=127.0.0.1 HTTP/1.1
+                                    <br>
+                                    host: 127.0.0.1:5000
+                                    <br>
+                                    connection: keep-alive
+                                    <br>
+                                    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+                                    <br>
+                                    accept-language: en-US
+                                    <br>
+                                    accept-encoding: gzip, deflate, br
+                                    <br>
+                                    accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+                                    <br>
+                            </pre>
+                        </section>
+                        <section id="tab-vuln-16-0-4" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>curl &#34;http://127.0.0.1:5000/ping?host=127.0.0.1&#34;</pre>
+                        </section>
+                        <section id="tab-vuln-16-0-5" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>[&#39;OSHP-X-Content-Type-Options&#39;]</pre>
+                        </section>
+                    </div>
+
+                <dl><dt>Solutions</dt><dd>Implement X-Content-Type-Options to prevent MIME type sniffing.</dd></dl>
+                <h5>References</h5>
+                <ul>
+                    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html#x-content-type-options">OWASP: MIME Sniffing</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types#mime_sniffing">Mozilla: MIME Sniffing</a></li>
+                </ul>
+                <br />
+                <hr>
+                <h3 id="anom_type_0">Internal Server Error</h3>
+                <dl>
+                    <dt>Description</dt>
+                    <dd>An error occurred on the server&#39;s side, preventing it to process the request. It may be the sign of a vulnerability.</dd>
+                </dl>
+
+                    <div class="tab-container">
+                        <h4><span class="severity severity-info"></span> Anomaly found in /ping</h4>
+                        <nav class="tab-nav">
+                            <a href="#tab-anom-0-0-1" class="tab-link active">Description</a>
+                            <a href="#tab-anom-0-0-2" class="tab-link">HTTP Request</a>
+                            <a href="#tab-anom-0-0-4" class="tab-link">cURL command line</a>
+                            <a href="#tab-anom-0-0-5" class="tab-link">WSTG Code</a>
+                        </nav>
+                        <section id="tab-anom-0-0-1" class="tab-content" style="min-height: 124px;">
+                            <pre>The server responded with a 500 HTTP error code while attempting to inject a payload in the parameter host</pre>
+                        </section>
+                        <section id="tab-anom-0-0-2" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre style="white-space: normal">
+                                    GET /ping?host=id HTTP/1.1
+                                    <br>
+                                    host: 127.0.0.1:5000
+                                    <br>
+                                    connection: keep-alive
+                                    <br>
+                                    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+                                    <br>
+                                    accept-language: en-US
+                                    <br>
+                                    accept-encoding: gzip, deflate, br
+                                    <br>
+                                    accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+                                    <br>
+                            </pre>
+                        </section>
+                        <section id="tab-anom-0-0-4" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>curl &#34;http://127.0.0.1:5000/ping?host=id&#34;</pre>
+                        </section>
+                        <section id="tab-anom-0-0-5" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>[&#39;WSTG-ERRH-01&#39;]</pre>
+                        </section>
+                    </div>
+                    <div class="tab-container">
+                        <h4><span class="severity severity-info"></span> Anomaly found in /ping</h4>
+                        <nav class="tab-nav">
+                            <a href="#tab-anom-0-1-1" class="tab-link active">Description</a>
+                            <a href="#tab-anom-0-1-2" class="tab-link">HTTP Request</a>
+                            <a href="#tab-anom-0-1-4" class="tab-link">cURL command line</a>
+                            <a href="#tab-anom-0-1-5" class="tab-link">WSTG Code</a>
+                        </nav>
+                        <section id="tab-anom-0-1-1" class="tab-content" style="min-height: 124px;">
+                            <pre>The server responded with a 500 HTTP error code while attempting to inject a payload in the parameter host</pre>
+                        </section>
+                        <section id="tab-anom-0-1-2" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre style="white-space: normal">
+                                    GET /ping?host=https%3A%2F%2Fwapiti3.ovh%2F%2Fe.php HTTP/1.1
+                                    <br>
+                                    host: 127.0.0.1:5000
+                                    <br>
+                                    connection: keep-alive
+                                    <br>
+                                    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+                                    <br>
+                                    accept-language: en-US
+                                    <br>
+                                    accept-encoding: gzip, deflate, br
+                                    <br>
+                                    accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+                                    <br>
+                            </pre>
+                        </section>
+                        <section id="tab-anom-0-1-4" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>curl &#34;http://127.0.0.1:5000/ping?host=https%3A%2F%2Fwapiti3.ovh%2F%2Fe.php&#34;</pre>
+                        </section>
+                        <section id="tab-anom-0-1-5" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>[&#39;WSTG-ERRH-01&#39;]</pre>
+                        </section>
+                    </div>
+                    <div class="tab-container">
+                        <h4><span class="severity severity-info"></span> Anomaly found in /ping</h4>
+                        <nav class="tab-nav">
+                            <a href="#tab-anom-0-2-1" class="tab-link active">Description</a>
+                            <a href="#tab-anom-0-2-2" class="tab-link">HTTP Request</a>
+                            <a href="#tab-anom-0-2-4" class="tab-link">cURL command line</a>
+                            <a href="#tab-anom-0-2-5" class="tab-link">WSTG Code</a>
+                        </nav>
+                        <section id="tab-anom-0-2-1" class="tab-content" style="min-height: 124px;">
+                            <pre>The server responded with a 500 HTTP error code while attempting to inject a payload in the parameter host</pre>
+                        </section>
+                        <section id="tab-anom-0-2-2" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre style="white-space: normal">
+                                    GET /ping?host=127.0.0.1%C2%BF%27%22%28 HTTP/1.1
+                                    <br>
+                                    host: 127.0.0.1:5000
+                                    <br>
+                                    connection: keep-alive
+                                    <br>
+                                    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+                                    <br>
+                                    accept-language: en-US
+                                    <br>
+                                    accept-encoding: gzip, deflate, br
+                                    <br>
+                                    accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+                                    <br>
+                            </pre>
+                        </section>
+                        <section id="tab-anom-0-2-4" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>curl &#34;http://127.0.0.1:5000/ping?host=127.0.0.1%C2%BF%27%22%28&#34;</pre>
+                        </section>
+                        <section id="tab-anom-0-2-5" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>[&#39;WSTG-ERRH-01&#39;]</pre>
+                        </section>
+                    </div>
+                    <div class="tab-container">
+                        <h4><span class="severity severity-info"></span> Anomaly found in /ping</h4>
+                        <nav class="tab-nav">
+                            <a href="#tab-anom-0-3-1" class="tab-link active">Description</a>
+                            <a href="#tab-anom-0-3-2" class="tab-link">HTTP Request</a>
+                            <a href="#tab-anom-0-3-4" class="tab-link">cURL command line</a>
+                            <a href="#tab-anom-0-3-5" class="tab-link">WSTG Code</a>
+                        </nav>
+                        <section id="tab-anom-0-3-1" class="tab-content" style="min-height: 124px;">
+                            <pre>The server responded with a 500 HTTP error code while attempting to inject a payload in the parameter host</pre>
+                        </section>
+                        <section id="tab-anom-0-3-2" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre style="white-space: normal">
+                                    GET /ping?host=%3C%2Ftitle%3E%3CScRiPt%3Ealert%28%27wkc271wj6u%27%29%3C%2FsCrIpT%3E HTTP/1.1
+                                    <br>
+                                    host: 127.0.0.1:5000
+                                    <br>
+                                    connection: keep-alive
+                                    <br>
+                                    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+                                    <br>
+                                    accept-language: en-US
+                                    <br>
+                                    accept-encoding: gzip, deflate, br
+                                    <br>
+                                    accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+                                    <br>
+                            </pre>
+                        </section>
+                        <section id="tab-anom-0-3-4" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>curl &#34;http://127.0.0.1:5000/ping?host=%3C%2Ftitle%3E%3CScRiPt%3Ealert%28%27wkc271wj6u%27%29%3C%2FsCrIpT%3E&#34;</pre>
+                        </section>
+                        <section id="tab-anom-0-3-5" class="tab-content" style="min-height: 124px; display: none;">
+                            <pre>[&#39;WSTG-ERRH-01&#39;]</pre>
+                        </section>
+                    </div>
+
+                <dl><dt>Solutions</dt><dd>More information about the error should be found in the server logs.</dd></dl>
+                <h5>References</h5>
+                <ul>
+                    <li><a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error">Wikipedia: List of 5xx HTTP status codes</a></li>
+                    <li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/01-Testing_For_Improper_Error_Handling">OWASP: Improper Error Handling</a></li>
+                </ul>
+                <br />
+                <hr>
+        </div>
+        <footer class="small" id="footer"><a href="https://wapiti-scanner.github.io/" id="wapiti_link">Wapiti 3.3.2</a> &copy; Nicolas SURRIBAS 2006-2026</footer>
+	</div>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>

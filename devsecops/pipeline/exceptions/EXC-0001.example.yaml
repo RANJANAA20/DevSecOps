@@ -1,0 +1,17 @@
+# Risk exception record. One file per exception, reviewed in a PR. The pipeline treats an expired exception as no exception.
+id: EXC-0001
+finding:
+  tool: trivy
+  id: CVE-0000-00000            # example only: a CRITICAL with no upstream fix
+  component: example-lib 1.2.3
+  location: devsecops/app-or-lab-target/requirements.txt
+decision: REQUIRE EXCEPTION -> ACCEPTED
+justification: No fixed version exists; the vulnerable code path (XML import) is not reachable in this service.
+compensating_controls:
+  - Import endpoint disabled by feature flag
+  - WAF rule blocks the exploit payload pattern
+owner: payments-team
+approver: security-lead
+ticket: SEC-1234
+created: 2026-10-11
+expires: 2026-11-11             # maximum 30 days for CRITICAL; renew only with fresh review

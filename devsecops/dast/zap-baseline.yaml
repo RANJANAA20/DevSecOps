@@ -1,0 +1,28 @@
+# ZAP Automation Framework plan: baseline (spider + passive scan only, no attacks).
+# Equivalent to zap-baseline.py, but runs on desktop ZAP without Docker.
+env:
+  contexts:
+    - name: lab-app
+      urls: ["http://127.0.0.1:5000"]
+      includePaths: ["http://127.0.0.1:5000.*"]
+  parameters:
+    failOnError: true
+    progressToStdout: true
+jobs:
+  - type: spider
+    parameters:
+      context: lab-app
+      maxDuration: 1
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 2
+  - type: report
+    parameters:
+      template: traditional-json
+      reportDir: ${ZAP_REPORT_DIR}
+      reportFile: zap-baseline
+  - type: report
+    parameters:
+      template: traditional-html
+      reportDir: ${ZAP_REPORT_DIR}
+      reportFile: zap-baseline

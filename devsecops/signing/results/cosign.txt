@@ -1,0 +1,15 @@
+﻿== sign-blob
+Flag --tlog-upload has been deprecated, prefer using a --signing-config file with no transparency log services
+Using payload from: C:\Users\hp\Documents\rlogics-security-assessment\devsecops\signing\dist\lab-app.zip
+Signing artifact...
+Wrote bundle to file C:\Users\hp\Documents\rlogics-security-assessment\devsecops\signing\dist\lab-app.zip.bundle
+== verify-blob (original artifact)
+WARNING: Skipping tlog verification is an insecure practice that lacks transparency and auditability verification for the blob.
+Verified OK
+== verify-blob (tampered artifact, expected to FAIL)
+WARNING: Skipping tlog verification is an insecure practice that lacks transparency and auditability verification for the blob.
+Error: failed to verify signature: could not verify message: invalid signature when validating ASN.1 encoded signature
+error during command execution: failed to verify signature: could not verify message: invalid signature when validating ASN.1 encoded signature
+
+original verify exit code : 0   (0 = signature valid)
+tampered verify exit code : 1   (non-zero = rejected)

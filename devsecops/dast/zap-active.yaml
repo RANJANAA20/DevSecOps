@@ -1,0 +1,32 @@
+# Active scan: sends attack payloads. Only ever point this at a target you own and are authorised to test.
+env:
+  contexts:
+    - name: lab-app
+      urls: ["http://127.0.0.1:5000"]
+      includePaths: ["http://127.0.0.1:5000.*"]
+  parameters:
+    failOnError: true
+    progressToStdout: true
+jobs:
+  - type: spider
+    parameters:
+      context: lab-app
+      maxDuration: 1
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 2
+  - type: activeScan
+    parameters:
+      context: lab-app
+      maxRuleDurationInMins: 1
+      maxScanDurationInMins: 5
+  - type: report
+    parameters:
+      template: traditional-json
+      reportDir: ${ZAP_REPORT_DIR}
+      reportFile: zap-active
+  - type: report
+    parameters:
+      template: traditional-html
+      reportDir: ${ZAP_REPORT_DIR}
+      reportFile: zap-active

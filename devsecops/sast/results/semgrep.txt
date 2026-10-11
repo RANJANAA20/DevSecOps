@@ -1,0 +1,30 @@
+                   
+                   
+┌─────────────────┐
+│ 4 Code Findings │
+└─────────────────┘
+                                                                                        
+    C:\Users\hp\Documents\rlogics-security-assessment\devsecops\app-or-lab-target\app.py
+   ❯❯❱ devsecops.sast.lab.python.hardcoded-secret
+          ❰❰ Blocking ❱❱
+          Hard-coded credential; load from a secret manager or environment instead.
+                                                                                   
+           11┆ AWS_SECRET_ACCESS_KEY = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+   
+   ❯❯❱ devsecops.sast.lab.python.sql-string-formatting
+          ❰❰ Blocking ❱❱
+          SQL built with string formatting from request data; use parameterised queries.
+                                                                                        
+           29┆ query = "SELECT id, name FROM users WHERE name = '%s'" % name  # SQL injection
+   
+   ❯❯❱ devsecops.sast.lab.python.subprocess-shell-true
+          ❰❰ Blocking ❱❱
+          shell=True with a non-constant command allows OS command injection.
+                                                                             
+           36┆ return subprocess.check_output("ping -n 1 " + host, shell=True)  # command injection
+   
+    ❯❱ devsecops.sast.lab.python.flask-debug-true
+          ❰❰ Blocking ❱❱
+          Flask debug mode exposes the Werkzeug console and must not ship to production.
+                                                                                        
+           40┆ app.run(host="0.0.0.0", port=5000, debug=True)  # debug console exposed
