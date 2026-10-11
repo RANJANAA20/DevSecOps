@@ -78,10 +78,11 @@ jobs:
           timeout 30 sh -c 'until curl -sf http://127.0.0.1:5000/; do sleep 1; done'
 
       - name: DAST baseline (ZAP, passive only)
-        uses: zaproxy/action-baseline@v0.12.0
+        uses: zaproxy/action-baseline@v0.15.0
         with:
           target: http://127.0.0.1:5000
           fail_action: false   # report mode in the lab; set true to gate
+          allow_issue_writing: false
 
       - uses: sigstore/cosign-installer@v3
 
